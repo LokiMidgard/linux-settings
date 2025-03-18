@@ -1,10 +1,3 @@
-# check if running as root, if not become root
-if [ "$(id -u)" -ne 0 ]; then
-    echo "Not running as root, trying to become root..."
-    exec sudo "$0" "$@"
-    exit 0
-fi
-
 # download the other files to user home
 
 DATA_STORE="https://raw.githubusercontent.com/LokiMidgard/linux-settings/refs/heads/main"
@@ -17,7 +10,7 @@ curl  -fsSL -o ~/update-certificates.sh $DATA_STORE/update-certificates.sh
 
 # update the certificates
 chmod +x ~/update-certificates.sh
-~/update-certificates.sh
+sudo ~/update-certificates.sh
 
 # set git config
 git config --global user.name "Patrick Kranz"
@@ -28,8 +21,8 @@ if ! command -v zsh &>/dev/null; then
     echo "zsh could not be found, installing..."
 
     # install zsh
-    apt install zsh -y
-    chsh -s $(which zsh)
+    sudo apt install zsh -y
+    sudo chsh -s $(which zsh)
 
     # install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
