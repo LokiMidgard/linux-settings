@@ -3,9 +3,7 @@
 DATA_STORE="https://raw.githubusercontent.com/LokiMidgard/linux-settings/refs/heads/main"
 
 curl  -fsSL -o ~/update.sh $DATA_STORE/update.sh
-curl  -fsSL -o ~/.zshrc $DATA_STORE/.zshrc
-curl  -fsSL -o ~/.p10k.zsh $DATA_STORE/.p10k.zsh
-curl  -fsSL -o ~/.zsh_custom $DATA_STORE/.zsh_custom
+
 curl  -fsSL -o ~/update-certificates.sh $DATA_STORE/update-certificates.sh
 
 # update the certificates
@@ -33,3 +31,7 @@ if ! command -v zsh &>/dev/null; then
     git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 fi
+
+curl  -fsSL -o ~/.zshrc $DATA_STORE/.zshrc
+curl  -fsSL -o ~/.p10k.zsh $DATA_STORE/.p10k.zsh
+curl  -fsSL -o ~/.zsh_custom $DATA_STORE/.zsh_custom
