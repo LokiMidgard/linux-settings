@@ -7,7 +7,7 @@ fi
 
 # download the other files to user home
 
-DATA_STORE="https://raw.githubusercontent.com/…"
+DATA_STORE="https://raw.githubusercontent.com/LokiMidgard/linux-settings/refs/heads/main"
 
 curl -o ~/update.sh $DATA_STORE/update.sh
 curl -o ~/.zshrc $DATA_STORE/.zshrc
