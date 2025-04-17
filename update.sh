@@ -3,6 +3,8 @@
 DATA_STORE="https://raw.githubusercontent.com/LokiMidgard/linux-settings/refs/heads/main"
 
 curl  -fsSL -o ~/update.sh $DATA_STORE/update.sh
+chmod +x ~/update.sh
+
 
 curl  -fsSL -o ~/update-certificates.sh $DATA_STORE/update-certificates.sh
 
