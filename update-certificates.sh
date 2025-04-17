@@ -1,5 +1,5 @@
 # check if the file is downloadable from https://step.fritz.box/certs/root_ca.crt   and download it to /usr/local/share/ca-certificates as new_root_ca.crt
-if curl -s --head --insecure --request GET https://step.fritz.box/certs/root_ca.crt | grep "200 OK" > /dev/null; then
+if curl -s --head --insecure --request GET https://step.fritz.box/certs/root_ca.crt | grep "HTTP/2 200" > /dev/null; then
     echo "File is downloadable"
     sudo curl --insecure -o /usr/local/share/ca-certificates/new_root_ca.crt https://step.fritz.box/certs/root_ca.crt
     # check if the new file is different from the old one
