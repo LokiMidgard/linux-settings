@@ -10,6 +10,13 @@ curl  -fsSL -o ~/update-certificates.sh $DATA_STORE/update-certificates.sh
 chmod +x ~/update-certificates.sh
 sudo ~/update-certificates.sh
 
+if ! command -v git &>/dev/null; then
+    echo "git could not be found, installing..."
+
+    # install git
+    sudo apt install git -y
+fi
+
 # set git config
 git config --global user.name "Patrick Kranz"
 git config --global user.email "patrick-kranz@live.de"
