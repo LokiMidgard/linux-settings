@@ -1,6 +1,6 @@
 unsetopt autocd
 
-alias carbonyl="docker run --rm -ti fathyb/carbonyl https://duckduckgo.com"
+alias browser="docker run --rm -ti fathyb/carbonyl https://duckduckgo.com"
 
 function random_passowrd {
 
