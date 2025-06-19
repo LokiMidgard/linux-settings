@@ -137,12 +137,6 @@ else
     echo "unzip ist bereits installiert."
 fi
 
-if ! dpkg -s libotf-bin >/dev/null 2>&1; then
-    echo "libotf-bin nicht gefunden, wird installiert..."
-    sudo apt-get install -y libotf-bin
-else
-    echo "libotf-bin ist bereits installiert."
-fi
 
 # install the fonts
 install_font "$MESLO_FONT_URL" "$MESLO_FONT_DIR"
