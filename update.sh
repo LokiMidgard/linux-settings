@@ -47,6 +47,10 @@ install_font() {
         ;;
     esac
 
+    # Setze Leserechte für alle entpackten Fonts
+    chmod 644 "$font_dir"/*.ttf 2>/dev/null
+    chmod 644 "$font_dir"/*.otf 2>/dev/null
+
     # Font-Cache aktualisieren
     fc-cache -fv
 
