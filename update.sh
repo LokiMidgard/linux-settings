@@ -121,8 +121,9 @@ if ! command -v docker >/dev/null 2>&1; then
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
     if ! getent group docker >/dev/null 2>&1; then
+    
         sudo groupadd docker
-        newgrp docker
+        sudo usermod -aG docker $(logname)
     fi
     echo "Docker installiert. Bitte einmal neu einloggen oder 'newgrp docker' ausführen, damit Gruppenänderung greift."
 else
