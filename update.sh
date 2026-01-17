@@ -82,6 +82,9 @@ fi
 git config --global user.name "Patrick Kranz"
 git config --global user.email "patrick-kranz@live.de"
 
+# set time-zone
+sudo timedatectl set-timezone Europe/Berlin
+
 # check if zsh is installed, if not install it
 if ! command -v zsh >/dev/null 2>&1; then
     echo "zsh could not be found, installing..."
