@@ -1,6 +1,7 @@
 # check if the file is downloadable from https://step.fritz.box/certs/root_ca.crt   and download it to /usr/local/share/ca-certificates/personal as new_root_ca.crt
 if curl -fsSL --head --insecure --request GET https://step.fritz.box/certs/root_ca.crt | grep "HTTP/2 200" > /dev/null; then
     echo "Zertifikat https://step.fritz.box/certs/root_ca.crt ist herunterladbar."
+    sudo mkdir -p /usr/local/share/ca-certificates/personal
     sudo curl -fsSL --insecure -o /usr/local/share/ca-certificates/personal/new_root_ca.crt https://step.fritz.box/certs/root_ca.crt
     # check if the new file is different from the old one
     if ! cmp -s /usr/local/share/ca-certificates/personal/new_root_ca.crt /usr/local/share/ca-certificates/personal/root_ca.crt; then
