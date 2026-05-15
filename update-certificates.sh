@@ -12,6 +12,10 @@ if curl -fsSL --head --insecure --request GET https://step.fritz.box/certs/root_
     else
         echo "Neues Zertifikat ist identisch mit /usr/local/share/ca-certificates/personal/root_ca.crt. Keine Aktualisierung notwendig."
     fi
+    # trust in arch linux (check if trust is installed)
+    if command -v trust >/dev/null 2>&1; then
+        sudo trust anchor /usr/local/share/ca-certificates/personal/root_ca.crt
+    fi
     # remove the new file
     sudo rm /usr/local/share/ca-certificates/personal/new_root_ca.crt
 else
