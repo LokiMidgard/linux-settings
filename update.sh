@@ -146,7 +146,11 @@ fi
 install_font "$MESLO_FONT_URL" "$MESLO_FONT_DIR"
 install_font "$OD_FONT_URL" "$OD_FONT_DIR"
 
+echo "Update .zshrc"
 curl -fsSL -o ~/.zshrc $DATA_STORE/.zshrc
+echo "Update .p10k.zsh"
 curl -fsSL -o ~/.p10k.zsh $DATA_STORE/.p10k.zsh
+echo "Update .zsh_custom"
 curl -fsSL -o ~/.zsh_custom $DATA_STORE/.zsh_custom
+echo "Update .random_password.zsh"
 curl -fsSL -o ~/.random_password.zsh $DATA_STORE/.random_password.zsh
