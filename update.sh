@@ -10,6 +10,15 @@ MESLO_FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0
 OD_FONT_DIR=$HOME/.local/share/fonts/OpenDyslexic
 OD_FONT_URL="https://github.com/antijingoist/opendyslexic/releases/download/v0.91.12/opendyslexic-0.910.12-rc2-2019.10.17.zip"
 
+# firts update the script (this file) then execute it agin, of course we need to check if we are already in an update process to avoid infinite loops
+if [ "$1" != "updated" ]; then
+    echo "Updating the script..."
+    curl -fsSL -o ~/update.sh $DATA_STORE/update.sh
+    chmod +x ~/update.sh
+    ~/update.sh updated
+    exit 0
+fi
+
 # helper functions
 install_font() {
     local font_url=$1
@@ -146,11 +155,7 @@ fi
 install_font "$MESLO_FONT_URL" "$MESLO_FONT_DIR"
 install_font "$OD_FONT_URL" "$OD_FONT_DIR"
 
-echo "Update .zshrc"
-curl -fsSL -o ~/.zshrc $DATA_STORE/.zshrc
-echo "Update .p10k.zsh"
-curl -fsSL -o ~/.p10k.zsh $DATA_STORE/.p10k.zsh
-echo "Update .zsh_custom"
-curl -fsSL -o ~/.zsh_custom $DATA_STORE/.zsh_custom
-echo "Update .random_password.zsh"
-curl -fsSL -o ~/.random_password.zsh $DATA_STORE/.random_password.zsh
+# update all the config files
+for file in .zshrc .p10k.zsh .zsh_custom .random_password.zsh; do
+    curl -fsSL -o "$HOME/$file" "$DATA_STORE/$file"
+done
