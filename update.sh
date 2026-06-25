@@ -95,11 +95,20 @@ git config --global user.email "patrick-kranz@live.de"
 sudo timedatectl set-timezone Europe/Berlin
 
 # check if zsh is installed, if not install it
+# check if zsh is installed, if not install it
 if ! command -v zsh >/dev/null 2>&1; then
     echo "zsh could not be found, installing..."
     sudo apt install zsh -y
     chsh -s $(which zsh)
 
+
+else
+    echo "zsh ist bereits installiert."
+fi
+
+# check if oh-my-zsh is installed
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "oh-my-zsh could not be found, installing..."
     # install oh-my-zsh
     RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -108,9 +117,8 @@ if ! command -v zsh >/dev/null 2>&1; then
     git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 
-else
-    echo "zsh ist bereits installiert."
 fi
+
 
 if ! command -v docker >/dev/null 2>&1; then
     echo "docker could not be found, installing..."
